@@ -5,24 +5,211 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>monopleg10</title>
 
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/ekmas/cs16.css@main/css/cs16.min.css"
+    />
+    <style>
+      .grid {
+        padding: 80px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 120px;
+      }
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/ekmas/cs16.css@main/css/cs16.min.css">
+      #3d {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+    </style>
   </head>
   <body>
     <main>
-      <h1>monopleg10</h1>
-      <p>
-        A sculpted, one-handed keyboard with 10 keys. Designed for users with
-        limited hand mobility or those using a single functional hand.
-        Ergonomically crafted for ease of use, with a compact layout that
-        minimizes movement. Perfect for anyone needing a more accessible and
-        efficient typing solution.
-      </p>
-      <button class="cs-btn">Button</button>
-      <button class="cs-btn" disabled>Button</button>
-      <hr />
-      <input class="cs-input" id="input" type="input" />
-      <label class="cs-input__label" for="input">First name</label>
+      <div class="grid">
+        <div class="grid-item">
+          <h1>monopleg10</h1>
+          <p>
+            A sculpted, one-handed keyboard with 10 keys. Designed for users
+            with limited hand mobility or those using a single functional hand.
+            Ergonomically crafted for ease of use, with a compact layout that
+            minimizes movement. Perfect for anyone needing a more accessible and
+            efficient typing solution.
+          </p>
+        </div>
+        <div class="grid-item">
+          <canvas id="3d"></canvas>
+          <div class="cs-slider">
+            <div class="value">
+              <p>L</p>
+              <p>R</p>
+            </div>
+            <div class="ruler"></div>
+            <input
+              id="orbit-slider"
+              type="range"
+              min="1"
+              max="365"
+              value="50"
+            />
+            <label for="orbit-slider">Rotation</label>
+          </div>
+        </div>
+        <div class="grid-item">
+          <h1>Features</h1>
+          <ul>
+            <li>10 keys</li>
+            <li>Compact layout</li>
+            <li>Customizable keycaps</li>
+            <li>USB-C connection</li>
+            <li>Plug and play</li>
+          </ul>
+        </div>
+        <div class="grid-item">
+          <h1>Specifications</h1>
+          <ul>
+            <li>Dimensions: 6.5 x 3.5 x 1.5 inches</li>
+            <li>Weight: 0.5 lbs</li>
+            <li>Material: ABS plastic</li>
+            <li>Color: Black</li>
+          </ul>
+        </div>
+        <div class="grid-item">
+          <button class="cs-btn">Button</button>
+          <button class="cs-btn" disabled>Button</button>
+          <hr />
+          <input class="cs-input" id="input" type="input" />
+          <label class="cs-input__label" for="input">First name</label>
+        </div>
+      </div>
     </main>
+
+    <!-- Import Three.js, GLTFLoader, and OrbitControls -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/controls/OrbitControls.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const canvas = document.getElementById("3d");
+        const container = canvas.closest(".grid-item");
+
+        canvas.width = container.offsetWidth;
+        canvas.height = container.offsetHeight;
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(
+          75,
+          canvas.width / canvas.height,
+          0.1,
+          1000
+        );
+        const renderer = new THREE.WebGLRenderer({
+          canvas: canvas,
+          alpha: true,
+        });
+        renderer.setSize(canvas.width, canvas.height);
+        renderer.shadowMap.enabled = true; // ✅ Enable shadows
+
+        // Set background color
+        scene.background = new THREE.Color(0x4a5942);
+
+        // OrbitControls - Allows camera rotation
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.rotateSpeed = 0.5;
+        controls.zoomSpeed = 0.5;
+        controls.minDistance = 1;
+        controls.maxDistance = 10;
+        controls.target.set(0, 0, 0);
+
+        // 🔥 Better Lighting Setup 🔥
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Soft global light
+        scene.add(ambientLight);
+
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
+        directionalLight.position.set(2, 5, 3); // Light from above
+        directionalLight.castShadow = true; // ✅ Enable shadows
+        scene.add(directionalLight);
+
+        // Optional: Add a SpotLight for more dramatic lighting
+        const spotLight = new THREE.SpotLight(0xffffff, 0.7);
+        spotLight.position.set(-3, 5, 3);
+        spotLight.castShadow = true; // ✅ Enable shadows
+        scene.add(spotLight);
+
+        // 🏠 Add a Floor to Show Shadows
+        const floorGeometry = new THREE.PlaneGeometry(10, 10);
+        const floorMaterial = new THREE.ShadowMaterial({ opacity: 0.3 });
+        const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+        floor.rotation.x = -Math.PI / 2;
+        floor.position.y = -1; // Place slightly below the model
+        floor.receiveShadow = true; // ✅ Receive shadows
+        scene.add(floor);
+
+        // Load GLB model
+        const loader = new THREE.GLTFLoader();
+        loader.load(
+          "assets/monoplegmodel.glb", // ✅ Change to your model path
+          function (gltf) {
+            const model = gltf.scene;
+            model.scale.set(1, 1, 1);
+            scene.add(model);
+            console.log("Model loaded!");
+
+            // ✅ Enable shadows on the model
+            model.traverse((node) => {
+              if (node.isMesh) {
+                node.castShadow = true;
+                node.receiveShadow = true;
+              }
+            });
+
+            // Center the model
+            const box = new THREE.Box3().setFromObject(model);
+            const center = box.getCenter(new THREE.Vector3());
+            controls.target.copy(center);
+
+            function setCameraOrbit(controls, angle) {
+              const rad = THREE.MathUtils.degToRad(angle); // Convert degrees to radians
+              controls.minAzimuthAngle = rad;
+              controls.maxAzimuthAngle = rad;
+              controls.update();
+            }
+
+            document
+              .getElementById("orbit-slider")
+              .addEventListener("input", (event) => {
+                setCameraOrbit(controls, event.target.value);
+              });
+          },
+          function (xhr) {
+            console.log(
+              `Loading: ${((xhr.loaded / xhr.total) * 100).toFixed(
+                2
+              )}% complete`
+            );
+          },
+          function (error) {
+            console.error("Error loading model:", error);
+          }
+        );
+
+        // Position the camera
+        camera.position.set(2, 18, 10);
+
+        // Animation loop
+        function animate() {
+          requestAnimationFrame(animate);
+          controls.update();
+          renderer.render(scene, camera);
+        }
+
+        animate();
+      });
+    </script>
   </body>
 </html>

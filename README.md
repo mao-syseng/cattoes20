@@ -8,4 +8,14 @@ Monopleg10 – A sculpted, one-handed keyboard with 10 keys. Designed for indivi
 - 22AWG solid core wire
 
 - cosmos config: https://ryanis.cool/cosmos/beta#cm:CnkKGxIIEKBPIAlIgAISA0iAAjgTQMSWMUicg7iobwoWEgUQoFsgCRIDELAvOABA0l5IgICMPAoZEgUQoGcgCRIDELA7OBRArqaKOEibg7SobwoZEgUQoHMgCRIAOChAgJKTkAJIg4uMjZDZARgAQMjQj/grSOKY1tADCj0KKhISEEAgAEDi6obIHUjTg6SP0PoBEg0gAECjhYyM0D9IgsIiOABAlIOQAxgCQPuLhJzwN0ifh6TN4fsDEAMYhiAiCQi0ARCqARiEBzAUOAOCAQBYAGgA
-- 
+- layout: https://inkeys.wiki/en/keymaps/taipo
+
+
+## Site notes
+- https://news.ycombinator.com/item?id=42814110
+- Use retro UI CSS, either Windows98 or the Steam/CS one.
+- Should use tabs and really compact UI and write in no nonsense old school writing
+- SVG image of the board
+- Form to order one
+- Use a slider and radio buttons for something...
+- Make something to show how to use the layout

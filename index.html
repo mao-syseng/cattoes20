@@ -11,18 +11,31 @@
       href="https://cdn.jsdelivr.net/gh/ekmas/cs16.css@main/css/cs16.min.css"
     />
     <style>
+      main {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
       .grid {
         padding: 80px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr);
-        gap: 120px;
+        gap: 80px;
       }
 
       #3d {
         width: 100%;
         height: 100%;
         display: block;
+      }
+      .border {
+        border-bottom: 1px solid var(--border-dark);
+        border-left: 1px solid var(--border-light);
+        border-right: 1px solid var(--border-dark);
+        border-top: 1px solid var(--border-light);
+      }
+      div {
+        margin-bottom: 10px;
       }
     </style>
   </head>
@@ -33,14 +46,15 @@
           <h1>monopleg10</h1>
           <p>
             A sculpted, one-handed keyboard with 10 keys. Designed for users
-            with limited hand mobility or those using a single functional hand.
-            Ergonomically crafted for ease of use, with a compact layout that
-            minimizes movement. Perfect for anyone needing a more accessible and
-            efficient typing solution.
+            with limited hand mobility. Ergonomically crafted for ease of use,
+            with a compact layout that minimizes movement. Perfect for anyone
+            needing a more accessible and efficient typing solution.
           </p>
         </div>
         <div class="grid-item">
-          <canvas id="3d"></canvas>
+          <div class="border">
+            <canvas id="3d"></canvas>
+          </div>
           <div class="cs-slider">
             <div class="value">
               <p>L</p>
@@ -55,6 +69,16 @@
               value="50"
             />
             <label for="orbit-slider">Rotation</label>
+            <div class="cs-checkbox">
+              <input id="wireframe" type="checkbox" />
+              <label class="cs-checkbox__label" for="wireframe"
+                >Wireframe</label
+              >
+            </div>
+            <div class="cs-checkbox">
+              <input id="spin" type="checkbox" />
+              <label class="cs-checkbox__label" for="spin">Spin</label>
+            </div>
           </div>
         </div>
         <div class="grid-item">
@@ -86,7 +110,6 @@
       </div>
     </main>
 
-    <!-- Import Three.js, GLTFLoader, and OrbitControls -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/controls/OrbitControls.js"></script>
@@ -95,6 +118,8 @@
       document.addEventListener("DOMContentLoaded", function () {
         const canvas = document.getElementById("3d");
         const container = canvas.closest(".grid-item");
+        let model = null;
+        let spin = false;
 
         canvas.width = container.offsetWidth;
         canvas.height = container.offsetHeight;
@@ -111,7 +136,7 @@
           alpha: true,
         });
         renderer.setSize(canvas.width, canvas.height);
-        renderer.shadowMap.enabled = true; // ✅ Enable shadows
+        renderer.shadowMap.enabled = false; // ✅ Enable shadows
 
         // Set background color
         scene.background = new THREE.Color(0x4a5942);
@@ -155,9 +180,10 @@
         loader.load(
           "assets/monoplegmodel.glb", // ✅ Change to your model path
           function (gltf) {
-            const model = gltf.scene;
+            model = gltf.scene;
             model.scale.set(1, 1, 1);
             scene.add(model);
+            setModelColor();
             console.log("Model loaded!");
 
             // ✅ Enable shadows on the model
@@ -180,10 +206,36 @@
               controls.update();
             }
 
+            function setModelColor() {
+              if (model) {
+                model.traverse((node) => {
+                  if (node.isMesh) {
+                    node.material.color.set("#808080"); // Classic Windows 98 Gray
+                  }
+                });
+              }
+            }
+
+            document
+              .getElementById("spin")
+              .addEventListener("change", (event) => {
+                spin = event.target.checked;
+              });
+
             document
               .getElementById("orbit-slider")
               .addEventListener("input", (event) => {
                 setCameraOrbit(controls, event.target.value);
+              });
+
+            document
+              .getElementById("wireframe")
+              .addEventListener("change", (event) => {
+                model.traverse((node) => {
+                  if (node.isMesh) {
+                    node.material.wireframe = event.target.checked;
+                  }
+                });
               });
           },
           function (xhr) {
@@ -198,17 +250,23 @@
           }
         );
 
-        // Position the camera
         camera.position.set(2, 18, 10);
 
-        // Animation loop
         function animate() {
           requestAnimationFrame(animate);
           controls.update();
+          if (spin) {
+            model.rotation.y += 0.002;
+          }
+
           renderer.render(scene, camera);
         }
 
         animate();
+
+        // ! ||--------------------------------------------------------------------------------||
+        // ! ||                                 event listeners                                ||
+        // ! ||--------------------------------------------------------------------------------||
       });
     </script>
   </body>

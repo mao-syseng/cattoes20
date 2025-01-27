@@ -84,3 +84,7 @@ if __name__ == '__main__':
 
 
 ```
+
+## Practice
+- 120s 5wpm 85% acc
+- 120s 6wpm 69% acc

@@ -35,36 +35,27 @@ https://mao-syseng.github.io/monopleg10
 - add hole for wire
 
 ## KMK Notes
-`ROW2COL`
+First working version of simple KMK config!!
 ```
- "keymap": [
-        [
-            "KC.Q",
-            "KC.W",
-            "KC.E",
-            "KC.R",
-            "KC.A",
-            "KC.S",
-            "KC.D",
-            "KC.F",
-            "KC.Z",
-            "KC.X",
-            "KC.TRNS",
-            "KC.TRNS"
-        ]
-    ],
-```
+import board
 
-```
-  "rowPins": [
-        "15",
-        "18",
-        "22"
-    ],
-    "colPins": [
-        "0",
-        "3",
-        "5",
-        "6"
-    ],
+from kmk.kmk_keyboard import KMKKeyboard
+from kmk.keys import KC
+from kmk.scanners import DiodeOrientation
+
+keyboard = KMKKeyboard()
+
+keyboard.col_pins = (board.GP0, board.GP3, board.GP5, board.GP6)
+keyboard.row_pins = (board.GP15, board.GP18, board.GP22)
+keyboard.diode_orientation = DiodeOrientation.ROW2COL
+
+keyboard.keymap = [
+    [KC.Q, KC.W, KC.E, KC.R,
+     KC.A, KC.S, KC.D, KC.F,
+     KC.Z, KC.X, KC.NO, KC.NO]
+]
+
+
+if __name__ == '__main__':
+    keyboard.go()
 ```

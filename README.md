@@ -5,8 +5,8 @@ https://mao-syseng.github.io/monopleg10
 
 ## Parts
 - 10x choc switches
-- 8x 1N4148 Signal Diodes
-- Raspberry Pi Pico
+- 10x 1N4148 Signal Diodes
+- seeed studio xiao rp2040 mcu
 - 22AWG solid core wire
 
 - cosmos config: https://ryanis.cool/cosmos/beta#cm:CnkKGxIIEKBPIAlIgAISA0iAAjgTQMSWMUicg7iobwoWEgUQoFsgCRIDELAvOABA0l5IgICMPAoZEgUQoGcgCRIDELA7OBRArqaKOEibg7SobwoZEgUQoHMgCRIAOChAgJKTkAJIg4uMjZDZARgAQMjQj/grSOKY1tADCj0KKhISEEAgAEDi6obIHUjTg6SP0PoBEg0gAECjhYyM0D9IgsIiOABAlIOQAxgCQPuLhJzwN0ifh6TN4fsDEAMYhiAiCQi0ARCqARiEBzAUOAOCAQBYAGgA

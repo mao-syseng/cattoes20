@@ -21,3 +21,12 @@ https://mao-syseng.github.io/monopleg10
 - Form to order one
 - Use a slider and radio buttons for something...
 - Make something to show how to use the layout
+
+
+### V1.1
+- 5mm walls instead of 2mm
+- 100% infill to add weight
+- skip the bottom plate and add dutter on the case edges.
+- solder columns first
+- use seeed studio xiao rp2040, Pi Pico was too big.
+- add hole for wire

@@ -33,3 +33,38 @@ https://mao-syseng.github.io/monopleg10
 - skip the bottom plate and add dutter on the case edges.
 - use seeed studio xiao rp2040, Pi Pico was too big.
 - add hole for wire
+
+## KMK Notes
+`ROW2COL`
+```
+ "keymap": [
+        [
+            "KC.Q",
+            "KC.W",
+            "KC.E",
+            "KC.R",
+            "KC.A",
+            "KC.S",
+            "KC.D",
+            "KC.F",
+            "KC.Z",
+            "KC.X",
+            "KC.TRNS",
+            "KC.TRNS"
+        ]
+    ],
+```
+
+```
+  "rowPins": [
+        "15",
+        "18",
+        "22"
+    ],
+    "colPins": [
+        "0",
+        "3",
+        "5",
+        "6"
+    ],
+```

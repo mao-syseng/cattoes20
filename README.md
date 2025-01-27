@@ -9,7 +9,7 @@ https://mao-syseng.github.io/monopleg10
 - seeed studio xiao rp2040 mcu
 - 22AWG solid core wire
 
-- cosmos config: https://ryanis.cool/cosmos/beta#cm:CnkKGxIIEKBPIAlIgAISA0iAAjgTQMSWMUicg7iobwoWEgUQoFsgCRIDELAvOABA0l5IgICMPAoZEgUQoGcgCRIDELA7OBRArqaKOEibg7SobwoZEgUQoHMgCRIAOChAgJKTkAJIg4uMjZDZARgAQMjQj/grSOKY1tADCj0KKhISEEAgAEDi6obIHUjTg6SP0PoBEg0gAECjhYyM0D9IgsIiOABAlIOQAxgCQPuLhJzwN0ifh6TN4fsDEAMYhiAiCQi0ARCqARiEBzAUOAOCAQBYAGgA
+- cosmos config: https://ryanis.cool/cosmos/beta#cm:Cn8KHhIJEKCABCAJSIACEgUQMEiAAjgTQMSWMUicg7iobwoWEgYQoIAGIAkSAhAwOABA0l5IgICMPAoZEgYQoIAIIAkSAhAwOBRArqaKOEibg7SobwocEgYQoIAKIAkSAhAwOChAgJKTkAJIg4uMjZDZARgAQMjQj/grSOKY1tADCj0KKhISEEAgAEDi6obIHUjTg6SP0PoBEg0gAECjhYyM0D9IgsIiOABAlIOQAxgCQPuLhJzwN0ifh6TN4fsDEAMYhiAiCQi0ARCqARiEBzAyOAOCAQBIAFgAaAByAiAF 
 - layout: https://inkeys.wiki/en/keymaps/taipo
 
 
@@ -21,12 +21,15 @@ https://mao-syseng.github.io/monopleg10
 - Form to order one
 - Use a slider and radio buttons for something...
 - Make something to show how to use the layout
+- use https://formsubmit.co/ to submit contact form
 
+## soldering notes
+- solder columns first
+- columns should be low and rows high, no need for much insulation due to low amount of wires.
 
-### V1.1
+## V1.1
 - 5mm walls instead of 2mm
 - 100% infill to add weight
 - skip the bottom plate and add dutter on the case edges.
-- solder columns first
 - use seeed studio xiao rp2040, Pi Pico was too big.
 - add hole for wire

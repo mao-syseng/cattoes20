@@ -87,9 +87,10 @@ if __name__ == '__main__':
 
 ## Practice 120s monkeytype for each item
 ### Day 1 2025-01-27
-- 5wpm 
-- 6wpm 
-- 6wpm
-- 6wpm
-- 5wpm
-- 
+1. 5wpm
+2. 6wpm 
+3. 6wpm
+4. 6wpm
+5. 5wpm
+6. 6wpm
+7. 7wpm

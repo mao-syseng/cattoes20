@@ -85,6 +85,11 @@ if __name__ == '__main__':
 
 ```
 
-## Practice
-- 120s 5wpm 85% acc
-- 120s 6wpm 69% acc
+## Practice 120s monkeytype for each item
+### Day 1 2025-01-27
+- 5wpm 
+- 6wpm 
+- 6wpm
+- 6wpm
+- 5wpm
+- 

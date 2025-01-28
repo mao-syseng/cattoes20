@@ -94,3 +94,14 @@ if __name__ == '__main__':
 5. 5wpm
 6. 6wpm
 7. 7wpm
+8. 8wpm
+9. 7wpm
+10. 7wpm
+11. 8wpm
+12. 8wpm
+13. 10wpm
+14. 8wpm
+15. 9wpm
+16. 7wpm
+17. 10wpm
+18. 

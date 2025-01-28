@@ -11,6 +11,24 @@
       href="https://cdn.jsdelivr.net/gh/ekmas/cs16.css@main/css/cs16.min.css"
     />
     <style>
+      :root {
+        --bg: #eff1f5;
+        --secondary-bg: #ccd0da;
+        --accent: #7287fd;
+        --secondary-accent: #ea76cb;
+        --text: #4c4f69;
+        --secondary-text: #5c5f77;
+        --text-3: #a5adce;
+        --border-light: #acb0be;
+        --border-dark: #7c7f93;
+        --disabled-text: #626880;
+        --disabled-text-shadow: #414559;
+        --outline: #f4b8e4;
+        --slider: #ca9ee6;
+        --slider-bg: #1e2030;
+        --scrollbar-track: #414559;
+      }
+
       main {
         max-width: 1400px;
         margin: 0 auto;
@@ -78,7 +96,7 @@
           </ul>
         </div>
         <div class="grid-item">
-          <div class="border">
+          <div>
             <canvas id="3d"></canvas>
           </div>
           <div class="controls">
@@ -104,7 +122,7 @@
               >
             </div>
             <div class="cs-checkbox">
-              <input id="spin" type="checkbox" />
+              <input id="spin" type="checkbox" checked />
               <label class="cs-checkbox__label" for="spin">Spin</label>
             </div>
             <fieldset class="cs-fieldset">
@@ -125,18 +143,17 @@
           </div>
         </div>
         <div class="grid-item">
-            <h1>Contact to learn more</h1>
-            <form action="">
+          <h1>Contact to learn more</h1>
+          <form action="">
+            <input class="cs-input" id="input" type="input" />
+            <label class="cs-input__label" for="input">First name</label>
 
-                <input class="cs-input" id="input" type="input" />
-                <label class="cs-input__label" for="input">First name</label>
-                
-                <br />
-                <br />
-                
-                <input type="text" value="John Doe" class="cs-input" />
-                <input type="text" disabled value="disabled" class="cs-input" />
-            </form>
+            <br />
+            <br />
+
+            <input type="text" value="John Doe" class="cs-input" />
+            <input type="text" disabled value="disabled" class="cs-input" />
+          </form>
         </div>
       </div>
     </main>
@@ -150,7 +167,7 @@
         const canvas = document.getElementById("3d");
         const container = canvas.closest(".grid-item");
         let model = null;
-        let spin = false;
+        let spin = true;
 
         canvas.width = container.offsetWidth;
         canvas.height = container.offsetHeight;
@@ -170,7 +187,7 @@
         renderer.shadowMap.enabled = false; // ✅ Enable shadows
 
         // Set background color
-        scene.background = new THREE.Color(0x4a5942);
+        scene.background = new THREE.Color(0xeff1f5);
 
         // OrbitControls - Allows camera rotation
         const controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -183,16 +200,16 @@
         controls.target.set(0, 0, 0);
 
         // 🔥 Better Lighting Setup 🔥
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.1); // Soft global light
+        const ambientLight = new THREE.AmbientLight(0x4c4f69, 0.8); // Soft global light
         scene.add(ambientLight);
 
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
         directionalLight.position.set(2, 5, 3); // Light from above
         directionalLight.castShadow = true; // ✅ Enable shadows
         scene.add(directionalLight);
 
         // Optional: Add a SpotLight for more dramatic lighting
-        const spotLight = new THREE.SpotLight(0xffffff, 0.2);
+        const spotLight = new THREE.SpotLight(0xffffff, 0.5);
         spotLight.position.set(-3, 5, 3);
         spotLight.castShadow = true; // ✅ Enable shadows
         scene.add(spotLight);
@@ -213,6 +230,7 @@
           function (gltf) {
             model = gltf.scene;
             model.scale.set(1, 1, 1);
+            model.position.z += 20; // Moves it up in Z direction
             scene.add(model);
             setModelColor();
             console.log("Model loaded!");
@@ -241,7 +259,7 @@
               if (model) {
                 model.traverse((node) => {
                   if (node.isMesh) {
-                    node.material.color.set("#dedfd6"); // Classic Windows 98 Gray
+                    node.material.color.set("#4c4f69"); // Classic Windows 98 Gray
                   }
                 });
               }
@@ -297,7 +315,7 @@
           camera.updateProjectionMatrix(); // Apply changes
         }
 
-        setCameraZoom("close");
+        setCameraZoom(3);
         function animate() {
           requestAnimationFrame(animate);
           controls.update();

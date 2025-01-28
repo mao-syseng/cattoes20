@@ -18,7 +18,7 @@
       .grid {
         padding: 80px;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr 1.3fr;
         grid-template-rows: repeat(2, 1fr);
         gap: 80px;
       }
@@ -37,6 +37,15 @@
       div {
         margin-bottom: 10px;
       }
+      hr {
+        margin: 1rem 0;
+      }
+      p {
+        margin-bottom: 1rem;
+      }
+      .controls {
+        display: flex;
+      }
     </style>
   </head>
   <body>
@@ -47,28 +56,47 @@
           <p>
             A sculpted, one-handed keyboard with 10 keys. Designed for users
             with limited hand mobility. Ergonomically crafted for ease of use,
-            with a compact layout that minimizes movement. Perfect for anyone
-            needing a more accessible and efficient typing solution.
+            with a compact layout that minimizes hand movement. Perfect for
+            anyone needing a more accessible and efficient typing solution.
           </p>
+
+          <p>
+            Comes preloaded with KMK firmware that transforms the 10 keys into a
+            full fledged keyboard. Can be customized to your liking if instead
+            it needs to be used for gaming or another specialized purpose.
+          </p>
+          <hr />
+          <h1>Specifications</h1>
+          <ul>
+            <li>USB-C connection</li>
+            <li>Seeed Studio Xiao RP2040 microcontroller</li>
+            <li>Kailh Choc low profile switches</li>
+            <li>Sculpted keys for improved ergonomics</li>
+            <li>3D printed with PLA</li>
+            <li>Handwired matrix circuit</li>
+            <li>Customizable firmware using python</li>
+          </ul>
         </div>
         <div class="grid-item">
           <div class="border">
             <canvas id="3d"></canvas>
           </div>
-          <div class="cs-slider">
-            <div class="value">
-              <p>L</p>
-              <p>R</p>
+          <div class="controls">
+            <div class="cs-slider">
+              <div class="value">
+                <p>L</p>
+                <p>R</p>
+              </div>
+              <div class="ruler"></div>
+              <input
+                id="orbit-slider"
+                type="range"
+                min="1"
+                max="365"
+                value="50"
+              />
+              <label for="orbit-slider">Rotation</label>
             </div>
-            <div class="ruler"></div>
-            <input
-              id="orbit-slider"
-              type="range"
-              min="1"
-              max="365"
-              value="50"
-            />
-            <label for="orbit-slider">Rotation</label>
             <div class="cs-checkbox">
               <input id="wireframe" type="checkbox" />
               <label class="cs-checkbox__label" for="wireframe"
@@ -79,33 +107,36 @@
               <input id="spin" type="checkbox" />
               <label class="cs-checkbox__label" for="spin">Spin</label>
             </div>
+            <fieldset class="cs-fieldset">
+              <legend>Zoom</legend>
+              <div class="radio-wrapper">
+                <input type="radio" name="animal" id="3x" />
+                <label for="3x">3x</label>
+              </div>
+              <div class="radio-wrapper">
+                <input type="radio" name="animal" id="2x" />
+                <label for="2x">2x</label>
+              </div>
+              <div class="radio-wrapper">
+                <input type="radio" name="animal" id="1x" />
+                <label for="1x">1x</label>
+              </div>
+            </fieldset>
           </div>
         </div>
         <div class="grid-item">
-          <h1>Features</h1>
-          <ul>
-            <li>10 keys</li>
-            <li>Compact layout</li>
-            <li>Customizable keycaps</li>
-            <li>USB-C connection</li>
-            <li>Plug and play</li>
-          </ul>
-        </div>
-        <div class="grid-item">
-          <h1>Specifications</h1>
-          <ul>
-            <li>Dimensions: 6.5 x 3.5 x 1.5 inches</li>
-            <li>Weight: 0.5 lbs</li>
-            <li>Material: ABS plastic</li>
-            <li>Color: Black</li>
-          </ul>
-        </div>
-        <div class="grid-item">
-          <button class="cs-btn">Button</button>
-          <button class="cs-btn" disabled>Button</button>
-          <hr />
-          <input class="cs-input" id="input" type="input" />
-          <label class="cs-input__label" for="input">First name</label>
+            <h1>Contact to learn more</h1>
+            <form action="">
+
+                <input class="cs-input" id="input" type="input" />
+                <label class="cs-input__label" for="input">First name</label>
+                
+                <br />
+                <br />
+                
+                <input type="text" value="John Doe" class="cs-input" />
+                <input type="text" disabled value="disabled" class="cs-input" />
+            </form>
         </div>
       </div>
     </main>
@@ -152,7 +183,7 @@
         controls.target.set(0, 0, 0);
 
         // 🔥 Better Lighting Setup 🔥
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Soft global light
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.1); // Soft global light
         scene.add(ambientLight);
 
         const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
@@ -161,7 +192,7 @@
         scene.add(directionalLight);
 
         // Optional: Add a SpotLight for more dramatic lighting
-        const spotLight = new THREE.SpotLight(0xffffff, 0.7);
+        const spotLight = new THREE.SpotLight(0xffffff, 0.2);
         spotLight.position.set(-3, 5, 3);
         spotLight.castShadow = true; // ✅ Enable shadows
         scene.add(spotLight);
@@ -210,7 +241,7 @@
               if (model) {
                 model.traverse((node) => {
                   if (node.isMesh) {
-                    node.material.color.set("#808080"); // Classic Windows 98 Gray
+                    node.material.color.set("#dedfd6"); // Classic Windows 98 Gray
                   }
                 });
               }
@@ -252,6 +283,21 @@
 
         camera.position.set(2, 18, 10);
 
+        function setCameraZoom(level) {
+          if (!camera) return;
+
+          if (level === 1) {
+            camera.fov = 30;
+          } else if (level === 2) {
+            camera.fov = 50;
+          } else if (level === 3) {
+            camera.fov = 75;
+          }
+
+          camera.updateProjectionMatrix(); // Apply changes
+        }
+
+        setCameraZoom("close");
         function animate() {
           requestAnimationFrame(animate);
           controls.update();

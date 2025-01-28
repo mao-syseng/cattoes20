@@ -99,4 +99,7 @@ if __name__ == '__main__':
 10. 7wpm
 11. 8wpm
 12. 8wpm
-13. 
+13. 10wpm
+14. 8wpm
+15. 9wpm
+16. 

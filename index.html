@@ -5,40 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>monopleg10</title>
 
+    <link rel="stylesheet" href="https://unpkg.com/missing.css@1.1.3" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
       rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/gh/ekmas/cs16.css@main/css/cs16.min.css"
     />
     <style>
       :root {
         --bg: #eff1f5;
-        --secondary-bg: #ccd0da;
-        --accent: #7287fd;
-        --secondary-accent: #ea76cb;
-        --text: #4c4f69;
-        --secondary-text: #5c5f77;
-        --text-3: #a5adce;
-        --border-light: #acb0be;
-        --border-dark: #7c7f93;
-        --disabled-text: #626880;
-        --disabled-text-shadow: #414559;
-        --outline: #f4b8e4;
-        --slider: #ca9ee6;
-        --slider-bg: #1e2030;
-        --scrollbar-track: #414559;
-      }
-
-      main {
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-      .grid {
-        padding: 80px;
-        display: grid;
-        grid-template-columns: 1fr 1.3fr;
-        grid-template-rows: repeat(2, 1fr);
-        gap: 80px;
+        --fg: #4c4f69;
+        --box-bg: #e6e9ef;
+        --interactive-bg: #e6e9ef;
+        --accent: #ea76cb;
+        --main-font: "Space Mono", serif;
       }
 
       #3d {
@@ -46,126 +27,98 @@
         height: 100%;
         display: block;
       }
-      .border {
-        border-bottom: 1px solid var(--border-dark);
-        border-left: 1px solid var(--border-light);
-        border-right: 1px solid var(--border-dark);
-        border-top: 1px solid var(--border-light);
+      .canvas-container {
+        height: 300px;
       }
-      div {
-        margin-bottom: 10px;
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 10px;
+        width: 100%;
+        aspect-ratio: 4 / 1.8;
       }
-      hr {
-        margin: 1rem 0;
-      }
-      p {
-        margin-bottom: 1rem;
-      }
-      .controls {
+      .key {
+        border: 1px solid #ea76cb;
+        color: #ea76cb;
+        font-size: 2rem;
+        border-radius: 1rem;
         display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #keyinput {
+        width: 100%;
       }
     </style>
   </head>
   <body>
+    <header>
+      <h1>monopleg10</h1>
+    </header>
     <main>
+      <div class="canvas-container">
+        <canvas id="3d"></canvas>
+      </div>
+
+      <p>
+        monopleg10 is a columnar-staggered, one handed, sculpted, hand-wired,
+        low profile, tiny keyboard.
+      </p>
+      <p>
+        the layout has heavy use of chords to have access to all keys from a
+        full sized keyboard in only 10 keys.
+      </p>
+
+      <hr />
+
+      <h2>layout</h2>
+
+      <p>
+        <label for="keyinput">type to see layout usage. only letters allowed</label>
+        <input
+          id="keyinput"
+          type="text"
+          inputmode="text"
+        />
+      </p>
+
       <div class="grid">
-        <div class="grid-item">
-          <h1>monopleg10</h1>
-          <p>
-            A sculpted, one-handed keyboard with 10 keys. Designed for users
-            with limited hand mobility. Ergonomically crafted for ease of use,
-            with a compact layout that minimizes hand movement. Perfect for
-            anyone needing a more accessible and efficient typing solution.
-          </p>
-
-          <p>
-            Comes preloaded with KMK firmware that transforms the 10 keys into a
-            full fledged keyboard. Can be customized to your liking if instead
-            it needs to be used for gaming or another specialized purpose.
-          </p>
-          <hr />
-          <h1>Specifications</h1>
-          <ul>
-            <li>USB-C connection</li>
-            <li>Seeed Studio Xiao RP2040 microcontroller</li>
-            <li>Kailh Choc low profile switches</li>
-            <li>Sculpted keys for improved ergonomics</li>
-            <li>3D printed with PLA</li>
-            <li>Handwired matrix circuit</li>
-            <li>Customizable firmware using python</li>
-          </ul>
-        </div>
-        <div class="grid-item">
-          <div>
-            <canvas id="3d"></canvas>
-          </div>
-          <div class="controls">
-            <div class="cs-slider">
-              <div class="value">
-                <p>L</p>
-                <p>R</p>
-              </div>
-              <div class="ruler"></div>
-              <input
-                id="orbit-slider"
-                type="range"
-                min="1"
-                max="365"
-                value="50"
-              />
-              <label for="orbit-slider">Rotation</label>
-            </div>
-            <div class="cs-checkbox">
-              <input id="wireframe" type="checkbox" />
-              <label class="cs-checkbox__label" for="wireframe"
-                >Wireframe</label
-              >
-            </div>
-            <div class="cs-checkbox">
-              <input id="spin" type="checkbox" checked />
-              <label class="cs-checkbox__label" for="spin">Spin</label>
-            </div>
-            <fieldset class="cs-fieldset">
-              <legend>Zoom</legend>
-              <div class="radio-wrapper">
-                <input type="radio" name="animal" id="3x" />
-                <label for="3x">3x</label>
-              </div>
-              <div class="radio-wrapper">
-                <input type="radio" name="animal" id="2x" />
-                <label for="2x">2x</label>
-              </div>
-              <div class="radio-wrapper">
-                <input type="radio" name="animal" id="1x" />
-                <label for="1x">1x</label>
-              </div>
-            </fieldset>
-          </div>
-        </div>
-        <div class="grid-item">
-          <h1>Contact to learn more</h1>
-          <form action="">
-            <input class="cs-input" id="input" type="input" />
-            <label class="cs-input__label" for="input">First name</label>
-
-            <br />
-            <br />
-
-            <input type="text" value="John Doe" class="cs-input" />
-            <input type="text" disabled value="disabled" class="cs-input" />
-          </form>
-        </div>
+        <div id="k1" class="key">R</div>
+        <div id="k2" class="key">S</div>
+        <div id="k3" class="key">N</div>
+        <div id="k4" class="key">I</div>
+        <div id="k5" class="key">A</div>
+        <div id="k6" class="key">O</div>
+        <div id="k7" class="key">T</div>
+        <div id="k8" class="key">E</div>
       </div>
     </main>
+    <footer></footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/controls/OrbitControls.js"></script>
 
     <script>
+      document
+        .getElementById("keyinput")
+        .addEventListener("input", function (event) {
+            this.value = this.value.replace(/[^a-zA-Z]/g, '');
+        });
+
+      function toggleKeys(id1, id2) {
+        const keys = document.querySelectorAll(".key");
+
+        keys.forEach((key) => key.classList.remove("on"));
+
+        document.getElementById(id1)?.classList.add("on");
+        document.getElementById(id2)?.classList.add("on");
+      }
+
       document.addEventListener("DOMContentLoaded", function () {
         const canvas = document.getElementById("3d");
-        const container = canvas.closest(".grid-item");
+        const container = canvas.closest(".canvas-container");
         let model = null;
         let spin = true;
 
@@ -186,10 +139,8 @@
         renderer.setSize(canvas.width, canvas.height);
         renderer.shadowMap.enabled = false; // ✅ Enable shadows
 
-        // Set background color
         scene.background = new THREE.Color(0xeff1f5);
 
-        // OrbitControls - Allows camera rotation
         const controls = new THREE.OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
         controls.dampingFactor = 0.05;
@@ -199,29 +150,13 @@
         controls.maxDistance = 10;
         controls.target.set(0, 0, 0);
 
-        // 🔥 Better Lighting Setup 🔥
-        const ambientLight = new THREE.AmbientLight(0x4c4f69, 0.8); // Soft global light
+        const ambientLight = new THREE.AmbientLight(0x4c4f69, 2); // Soft global light
         scene.add(ambientLight);
 
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
         directionalLight.position.set(2, 5, 3); // Light from above
         directionalLight.castShadow = true; // ✅ Enable shadows
         scene.add(directionalLight);
-
-        // Optional: Add a SpotLight for more dramatic lighting
-        const spotLight = new THREE.SpotLight(0xffffff, 0.5);
-        spotLight.position.set(-3, 5, 3);
-        spotLight.castShadow = true; // ✅ Enable shadows
-        scene.add(spotLight);
-
-        // 🏠 Add a Floor to Show Shadows
-        const floorGeometry = new THREE.PlaneGeometry(10, 10);
-        const floorMaterial = new THREE.ShadowMaterial({ opacity: 0.3 });
-        const floor = new THREE.Mesh(floorGeometry, floorMaterial);
-        floor.rotation.x = -Math.PI / 2;
-        floor.position.y = -1; // Place slightly below the model
-        floor.receiveShadow = true; // ✅ Receive shadows
-        scene.add(floor);
 
         // Load GLB model
         const loader = new THREE.GLTFLoader();
@@ -230,7 +165,6 @@
           function (gltf) {
             model = gltf.scene;
             model.scale.set(1, 1, 1);
-            model.position.z += 20; // Moves it up in Z direction
             scene.add(model);
             setModelColor();
             console.log("Model loaded!");
@@ -243,11 +177,6 @@
               }
             });
 
-            // Center the model
-            const box = new THREE.Box3().setFromObject(model);
-            const center = box.getCenter(new THREE.Vector3());
-            controls.target.copy(center);
-
             function setCameraOrbit(controls, angle) {
               const rad = THREE.MathUtils.degToRad(angle); // Convert degrees to radians
               controls.minAzimuthAngle = rad;
@@ -259,33 +188,11 @@
               if (model) {
                 model.traverse((node) => {
                   if (node.isMesh) {
-                    node.material.color.set("#4c4f69"); // Classic Windows 98 Gray
+                    node.material.color.set("#ea76cb");
                   }
                 });
               }
             }
-
-            document
-              .getElementById("spin")
-              .addEventListener("change", (event) => {
-                spin = event.target.checked;
-              });
-
-            document
-              .getElementById("orbit-slider")
-              .addEventListener("input", (event) => {
-                setCameraOrbit(controls, event.target.value);
-              });
-
-            document
-              .getElementById("wireframe")
-              .addEventListener("change", (event) => {
-                model.traverse((node) => {
-                  if (node.isMesh) {
-                    node.material.wireframe = event.target.checked;
-                  }
-                });
-              });
           },
           function (xhr) {
             console.log(
@@ -300,37 +207,17 @@
         );
 
         camera.position.set(2, 18, 10);
-
-        function setCameraZoom(level) {
-          if (!camera) return;
-
-          if (level === 1) {
-            camera.fov = 30;
-          } else if (level === 2) {
-            camera.fov = 50;
-          } else if (level === 3) {
-            camera.fov = 75;
-          }
-
-          camera.updateProjectionMatrix(); // Apply changes
-        }
-
-        setCameraZoom(3);
         function animate() {
           requestAnimationFrame(animate);
           controls.update();
           if (spin) {
-            model.rotation.y += 0.002;
+            model.rotation.y += 0.001;
           }
 
           renderer.render(scene, camera);
         }
 
         animate();
-
-        // ! ||--------------------------------------------------------------------------------||
-        // ! ||                                 event listeners                                ||
-        // ! ||--------------------------------------------------------------------------------||
       });
     </script>
   </body>

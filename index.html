@@ -47,6 +47,11 @@
         align-items: center;
         justify-content: center;
       }
+      .on {
+        background-color: #ea76cb;
+        color: #4c4f69;
+        border: 1px solid #4c4f69;
+      }
       #keyinput {
         width: 100%;
       }
@@ -75,23 +80,21 @@
       <h2>layout</h2>
 
       <p>
-        <label for="keyinput">type to see layout usage. only letters allowed</label>
-        <input
-          id="keyinput"
-          type="text"
-          inputmode="text"
-        />
+        <label for="keyinput"
+          >type to see layout usage. only letters allowed</label
+        >
+        <input id="keyinput" type="text" inputmode="text" />
       </p>
 
       <div class="grid">
-        <div id="k1" class="key">R</div>
-        <div id="k2" class="key">S</div>
-        <div id="k3" class="key">N</div>
-        <div id="k4" class="key">I</div>
-        <div id="k5" class="key">A</div>
-        <div id="k6" class="key">O</div>
-        <div id="k7" class="key">T</div>
-        <div id="k8" class="key">E</div>
+        <div id="r" class="key">R</div>
+        <div id="s" class="key on">S</div>
+        <div id="n" class="key">N</div>
+        <div id="i" class="key">I</div>
+        <div id="a" class="key">A</div>
+        <div id="o" class="key">O</div>
+        <div id="t" class="key">T</div>
+        <div id="e" class="key">E</div>
       </div>
     </main>
     <footer></footer>
@@ -101,20 +104,55 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/controls/OrbitControls.js"></script>
 
     <script>
+      // Assuming this is the structure of the combos
+      const combos = [
+        { keys: ["R", "S"], result: "B" },
+        { keys: ["N", "I"], result: "Y" },
+        { keys: ["T", "E"], result: "H" },
+        { keys: ["A", "O"], result: "L" },
+        { keys: ["S", "N"], result: "P" },
+        { keys: ["O", "T"], result: "U" },
+        { keys: ["R", "I"], result: "G" },
+        { keys: ["A", "E"], result: "D" },
+        { keys: ["R", "N"], result: "Z" },
+        { keys: ["S", "I"], result: "F" },
+        { keys: ["A", "T"], result: "Q" },
+        { keys: ["O", "E"], result: "C" },
+        { keys: ["R", "T"], result: "X" },
+        { keys: ["O", "I"], result: "K" },
+        { keys: ["S", "E"], result: "V" },
+        { keys: ["N", "A"], result: "J" },
+        { keys: ["R", "E"], result: "M" },
+        { keys: ["A", "I"], result: "W" },
+      ];
+
+      // Your toggleKeys function (assuming it takes key IDs as arguments)
+      function toggleKeys(id1, id2) {
+        const keys = document.querySelectorAll(".key");
+        keys.forEach((key) => key.classList.remove("on"));
+
+        const element1 = document.getElementById(id1.toLowerCase());
+        const element2 = document.getElementById(id2.toLowerCase());
+
+        element1?.classList.add("on");
+        element2?.classList.add("on");
+      }
+
       document
         .getElementById("keyinput")
         .addEventListener("input", function (event) {
-            this.value = this.value.replace(/[^a-zA-Z]/g, '');
+          this.value = this.value.replace(/[^a-zA-Z]/g, ""); // remove non letters
+          const input = event.data;
+          const lastChar = input[input.length - 1];
+
+          const combo = combos.find(
+            (combo) => combo.result.toLowerCase() == lastChar
+          );
+
+          if (combo) {
+            toggleKeys(combo.keys[0], combo.keys[1]);
+          }
         });
-
-      function toggleKeys(id1, id2) {
-        const keys = document.querySelectorAll(".key");
-
-        keys.forEach((key) => key.classList.remove("on"));
-
-        document.getElementById(id1)?.classList.add("on");
-        document.getElementById(id2)?.classList.add("on");
-      }
 
       document.addEventListener("DOMContentLoaded", function () {
         const canvas = document.getElementById("3d");
@@ -210,7 +248,7 @@
         function animate() {
           requestAnimationFrame(animate);
           controls.update();
-          if (spin) {
+          if (spin && model) {
             model.rotation.y += 0.001;
           }
 

@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="-no-dark-theme" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>monopleg10</title>
-
     <link rel="stylesheet" href="https://unpkg.com/missing.css@1.1.3" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -55,6 +54,34 @@
       #keyinput {
         width: 100%;
       }
+
+      .practice-entry {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 5px;
+      }
+
+      meter {
+        flex: 1;
+        width: 80%;
+        background: none;
+      }
+      meter::-webkit-meter-optimum-value {
+        background: #ea76cb;
+        border-radius: 6px;
+      }
+
+      meter::-moz-meter-bar {
+        background: #ea76cb;
+        border-radius: 6px;
+      }
+
+      .wpm-label {
+        min-width: 40px;
+        text-align: right;
+      }
     </style>
   </head>
   <body>
@@ -74,9 +101,7 @@
         the layout has heavy use of chords to have access to all keys from a
         full sized keyboard in only 10 keys.
       </p>
-
       <hr />
-
       <h2>layout</h2>
 
       <p>
@@ -88,13 +113,106 @@
 
       <div class="grid">
         <div id="r" class="key">R</div>
-        <div id="s" class="key on">S</div>
+        <div id="s" class="key">S</div>
         <div id="n" class="key">N</div>
         <div id="i" class="key">I</div>
         <div id="a" class="key">A</div>
         <div id="o" class="key">O</div>
         <div id="t" class="key">T</div>
         <div id="e" class="key">E</div>
+      </div>
+      <h2>my progress on learning to type on this thing</h2>
+      <p>Each entry is 120s Monkeytype - Day 1 2025-01-27</p>
+
+      <div class="practice-container">
+        <div class="practice-entry">
+          <meter min="0" max="100" value="5"></meter>
+          <span class="wpm-label">5 WPM</span>
+        </div>
+        <div class="practice-entry">
+          <meter min="0" max="100" value="6"></meter>
+          <span class="wpm-label">6 WPM</span>
+        </div>
+        <div class="practice-entry">
+          <meter min="0" max="100" value="6"></meter>
+          <span class="wpm-label">6 WPM</span>
+        </div>
+        <div class="practice-entry">
+          <meter min="0" max="100" value="6"></meter>
+          <span class="wpm-label">6 WPM</span>
+        </div>
+        <div class="practice-entry">
+          <meter min="0" max="100" value="5"></meter>
+          <span class="wpm-label">5 WPM</span>
+        </div>
+        <div class="practice-entry">
+          <meter min="0" max="100" value="6"></meter>
+          <span class="wpm-label">6 WPM</span>
+        </div>
+        <div class="practice-entry">
+          <meter min="0" max="100" value="7"></meter>
+          <span class="wpm-label">7 WPM</span>
+        </div>
+        <div class="practice-entry">
+          <meter min="0" max="100" value="8"></meter>
+          <span class="wpm-label">8 WPM</span>
+        </div>
+        <div class="practice-entry">
+          <meter min="0" max="100" value="7"></meter>
+          <span class="wpm-label">7 WPM</span>
+        </div>
+        <div class="practice-entry">
+          <meter min="0" max="100" value="7"></meter>
+          <span class="wpm-label">7 WPM</span>
+        </div>
+        <div class="practice-entry">
+          <meter min="0" max="100" value="8"></meter>
+          <span class="wpm-label">8 WPM</span>
+        </div>
+        <div class="practice-entry">
+          <meter min="0" max="100" value="8"></meter>
+          <span class="wpm-label">8 WPM</span>
+        </div>
+        <div class="practice-entry">
+          <meter min="0" max="100" value="10"></meter>
+          <span class="wpm-label">10 WPM</span>
+        </div>
+        <div class="practice-entry">
+          <meter min="0" max="100" value="8"></meter>
+          <span class="wpm-label">8 WPM</span>
+        </div>
+        <div class="practice-entry">
+          <meter min="0" max="100" value="9"></meter>
+          <span class="wpm-label">9 WPM</span>
+        </div>
+        <div class="practice-entry">
+          <meter min="0" max="100" value="7"></meter>
+          <span class="wpm-label">7 WPM</span>
+        </div>
+        <div class="practice-entry">
+          <meter min="0" max="100" value="10"></meter>
+          <span class="wpm-label">10 WPM</span>
+        </div>
+        <div class="practice-entry">
+          <meter min="0" max="100" value="8"></meter>
+          <span class="wpm-label">8 WPM</span>
+        </div>
+        <div class="practice-entry">
+          <meter min="0" max="100" value="9"></meter>
+          <span class="wpm-label">9 WPM</span>
+        </div>
+        <div class="practice-entry">
+          <meter min="0" max="100" value="8"></meter>
+          <span class="wpm-label">8 WPM</span>
+        </div>
+        <div class="practice-entry">
+          <meter min="0" max="100" value="10"></meter>
+          <span class="wpm-label">10 WPM</span>
+        </div>
+        <div class="practice-entry">
+          <meter min="0" max="100" value="11"></meter>
+          <span class="wpm-label">11 WPM</span>
+        </div>
       </div>
     </main>
     <footer></footer>
@@ -104,7 +222,6 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/controls/OrbitControls.js"></script>
 
     <script>
-      // Assuming this is the structure of the combos
       const combos = [
         { keys: ["R", "S"], result: "B" },
         { keys: ["N", "I"], result: "Y" },
@@ -126,7 +243,6 @@
         { keys: ["A", "I"], result: "W" },
       ];
 
-      // Your toggleKeys function (assuming it takes key IDs as arguments)
       function toggleKeys(id1, id2) {
         const keys = document.querySelectorAll(".key");
         keys.forEach((key) => key.classList.remove("on"));
@@ -154,6 +270,10 @@
           }
         });
 
+      // ! ||--------------------------------------------------------------------------------||
+      // ! ||                                    3D stuff                                    ||
+      // ! ||--------------------------------------------------------------------------------||
+
       document.addEventListener("DOMContentLoaded", function () {
         const canvas = document.getElementById("3d");
         const container = canvas.closest(".canvas-container");
@@ -175,7 +295,7 @@
           alpha: true,
         });
         renderer.setSize(canvas.width, canvas.height);
-        renderer.shadowMap.enabled = false; // ✅ Enable shadows
+        renderer.shadowMap.enabled = false;
 
         scene.background = new THREE.Color(0xeff1f5);
 
@@ -188,18 +308,18 @@
         controls.maxDistance = 10;
         controls.target.set(0, 0, 0);
 
-        const ambientLight = new THREE.AmbientLight(0x4c4f69, 2); // Soft global light
+        const ambientLight = new THREE.AmbientLight(0x4c4f69, 2);
         scene.add(ambientLight);
 
         const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-        directionalLight.position.set(2, 5, 3); // Light from above
-        directionalLight.castShadow = true; // ✅ Enable shadows
+        directionalLight.position.set(2, 5, 3);
+        directionalLight.castShadow = true;
         scene.add(directionalLight);
 
         // Load GLB model
         const loader = new THREE.GLTFLoader();
         loader.load(
-          "assets/monoplegmodel.glb", // ✅ Change to your model path
+          "assets/monoplegmodel.glb",
           function (gltf) {
             model = gltf.scene;
             model.scale.set(1, 1, 1);
@@ -207,7 +327,7 @@
             setModelColor();
             console.log("Model loaded!");
 
-            // ✅ Enable shadows on the model
+            // Enable shadows on the model
             model.traverse((node) => {
               if (node.isMesh) {
                 node.castShadow = true;
@@ -232,13 +352,7 @@
               }
             }
           },
-          function (xhr) {
-            console.log(
-              `Loading: ${((xhr.loaded / xhr.total) * 100).toFixed(
-                2
-              )}% complete`
-            );
-          },
+          function (xhr) {},
           function (error) {
             console.error("Error loading model:", error);
           }

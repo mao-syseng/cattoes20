@@ -15,13 +15,7 @@ https://mao-syseng.github.io/monopleg10
 
 ## Site notes
 - https://news.ycombinator.com/item?id=42814110
-- Use retro UI CSS, either Windows98 or the Steam/CS one.
-- Should use tabs and really compact UI and write in no nonsense old school writing
-- SVG image of the board
-- Form to order one
-- Use a slider and radio buttons for something...
 - Make something to show how to use the layout
-- use https://formsubmit.co/ to submit contact form
 
 ## soldering notes
 - solder columns first

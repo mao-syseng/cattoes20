@@ -9,7 +9,7 @@ https://mao-syseng.github.io/monopleg10
 - seeed studio xiao rp2040 mcu
 - 22AWG solid core wire
 
-- cosmos config: https://ryanis.cool/cosmos/beta#cm:Cn8KHhIJEKCABCAJSIACEgUQMEiAAjgTQMSWMUicg7iobwoWEgYQoIAGIAkSAhAwOABA0l5IgICMPAoZEgYQoIAIIAkSAhAwOBRArqaKOEibg7SobwocEgYQoIAKIAkSAhAwOChAgJKTkAJIg4uMjZDZARgAQMjQj/grSOKY1tADCj0KKhISEEAgAEDi6obIHUjTg6SP0PoBEg0gAECjhYyM0D9IgsIiOABAlIOQAxgCQPuLhJzwN0ifh6TN4fsDEAMYhiAiCQi0ARCqARiEBzAyOAOCAQBIAFgAaAByAiAF 
+
 - layout: https://inkeys.wiki/en/keymaps/taipo
 
 
@@ -79,29 +79,5 @@ if __name__ == '__main__':
 
 ```
 
-## Practice 120s monkeytype for each item
-### Day 1 2025-01-27
-1. 5wpm
-2. 6wpm 
-3. 6wpm
-4. 6wpm
-5. 5wpm
-6. 6wpm
-7. 7wpm
-8. 8wpm
-9. 7wpm
-10. 7wpm
-11. 8wpm
-12. 8wpm
-13. 10wpm
-14. 8wpm
-15. 9wpm
-16. 7wpm
-17. 10wpm
-18. 8wpm
-19. 9wpm
-20. 8wpm
-21. 10wpm
-22. 11wpm
-23. 
-24. 
+## Cosmos 
+- cosmos config: https://ryanis.cool/cosmos/beta#cm:Cn8KHhIJEKCABCAJSIACEgUQMEiAAjgTQMSWMUicg7iobwoWEgYQoIAGIAkSAhAwOABA0l5IgICMPAoZEgYQoIAIIAkSAhAwOBRArqaKOEibg7SobwocEgYQoIAKIAkSAhAwOChAgJKTkAJIg4uMjZDZARgAQMjQj/grSOKY1tADCj0KKhISEEAgAEDi6obIHUjTg6SP0PoBEg0gAECjhYyM0D9IgsIiOABAlIOQAxgCQPuLhJzwN0ifh6TN4fsDEAMYhiAiCQi0ARCqARiEBzAyOAOCAQBIAFgAaAByAiAF 

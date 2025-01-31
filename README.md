@@ -8,9 +8,13 @@ https://mao-syseng.github.io/monopleg10
 - 10x 1N4148 Signal Diodes
 - seeed studio xiao rp2040 mcu
 - 22AWG solid core wire
+- 3D printed case - I would recommend using 100% infill to add some weight to it.
+- Some
 
 
-- layout: https://inkeys.wiki/en/keymaps/taipo
+## Layout
+- Taipo https://inkeys.wiki/en/keymaps/taipo
+- There is interactive version of the layout here: https://mao-syseng.github.io/monopleg10/
 
 
 ## Site notes

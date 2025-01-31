@@ -38,6 +38,12 @@ combos.combos = [
     Chord((KC.N, KC.A), KC.J),
     Chord((KC.R, KC.E), KC.M),
     Chord((KC.A, KC.I), KC.W),
+    Chord((KC.S, KC.T), KC.SLSH),  # /
+    Chord((KC.R, KC.O), KC.SCLN),  # ;
+    Chord((KC.N, KC.E), KC.COMM),  # ,
+    Chord((KC.A, KC.S), KC.QUOT),  # '
+    Chord((KC.T, KC.I), KC.QUES),  # ?
+    Chord((KC.O, KC.N), KC.MINS),  # -
 ]
 
 if __name__ == '__main__':

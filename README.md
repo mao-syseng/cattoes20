@@ -9,7 +9,7 @@ https://mao-syseng.github.io/monopleg10
 - seeed studio xiao rp2040 mcu
 - 22AWG solid core wire
 - 3D printed case - I would recommend using 100% infill to add some weight to it.
-- Some
+- Some rubber tabs on the bottom of the case to avoid slipping.
 
 
 ## Layout

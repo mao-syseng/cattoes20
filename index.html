@@ -125,7 +125,7 @@
       <p>Each entry is 120s Monkeytype - Day 1 2025-01-27</p>
 
       <div class="practice-container">
-        <ol>
+        <ol id="practice-list">
           <li>
             <div class="practice-entry">
               <meter min="0" max="100" value="5"></meter>
@@ -300,7 +300,30 @@
               <span class="wpm-label">14 WPM</span>
             </div>
           </li>
-          
+          <li>
+            <p>
+              Before this was with one keyboard and one hand, from now on is with 2 keyboards and
+              2 hands
+            </p>
+          </li>
+          <li>
+            <div class="practice-entry">
+              <meter min="0" max="100" value="7"></meter>
+              <span class="wpm-label">7 WPM</span>
+            </div>
+          </li>
+          <li>
+            <div class="practice-entry">
+              <meter min="0" max="100" value="9"></meter>
+              <span class="wpm-label">9</span>
+            </div>
+          </li>
+          <li>
+            <div class="practice-entry">
+              <meter min="0" max="100" value="10"></meter>
+              <span class="wpm-label">10 WPM</span>
+            </div>
+          </li>
         </ol>
       </div>
     </main>
@@ -358,6 +381,9 @@
             toggleKeys(combo.keys[0], combo.keys[1]);
           }
         });
+
+      // Call this function to render the list
+      renderPracticeEntries(practiceValues);
 
       // ! ||--------------------------------------------------------------------------------||
       // ! ||                                    3D stuff                                    ||

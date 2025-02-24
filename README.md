@@ -32,6 +32,12 @@ https://mao-syseng.github.io/monopleg10
 - use seeed studio xiao rp2040, Pi Pico was too big.
 - add hole for wire
 
+## Firmware notes
+- hold boot button while plugging in to laptop
+- drag and drop CircuitPython to the microcontroller. Remember to get correct circuitpython version for the board.
+- Drag and drop KMK folder to the board.
+- Edit code.py accordingly
+
 ## KMK Notes
 First working version of simple KMK config!! has all base chords
 ```

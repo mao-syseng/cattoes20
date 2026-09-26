@@ -4,6 +4,7 @@ A custom 10-key chorded keyboard based on the Raspberry Pi Pico H / RP2040.
 
 
 ## QMK folder structure
+```
 qmk_firmware/
 └── keyboards/
     └── pico_chord10/
@@ -13,6 +14,10 @@ qmk_firmware/
         └── keymaps/
             └── default/
                 └── keymap.c
+```
+
+## QMK Build
+`qmk compile -kb pico_chord10 -km default`
 
 
 ## Hardware

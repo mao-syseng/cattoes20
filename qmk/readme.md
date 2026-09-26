@@ -18,6 +18,9 @@ qmk_firmware/
 
 ## QMK Build
 `qmk compile -kb pico_chord10 -km default`
+You should get an RP2040 .uf2 firmware file.
+
+For flashing, put the Pico into its USB bootloader by holding BOOTSEL while plugging it into USB. The Pico will appear as the RPI-RP2 drive; copy the .uf2 file to it
 
 
 ## Hardware

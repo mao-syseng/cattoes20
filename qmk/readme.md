@@ -2,6 +2,19 @@
 
 A custom 10-key chorded keyboard based on the Raspberry Pi Pico H / RP2040.
 
+
+## QMK folder structure
+qmk_firmware/
+└── keyboards/
+    └── pico_chord10/
+        ├── keyboard.json
+        ├── rules.mk
+        ├── readme.md
+        └── keymaps/
+            └── default/
+                └── keymap.c
+
+
 ## Hardware
 
 - Raspberry Pi Pico H

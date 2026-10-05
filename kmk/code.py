@@ -9,8 +9,8 @@ keyboard = KMKKeyboard()
 combos = Combos()
 keyboard.modules.append(combos)
 
-keyboard.col_pins = (board.GP0, board.GP3, board.GP5, board.GP6)
-keyboard.row_pins = (board.GP15, board.GP18, board.GP22)
+keyboard.col_pins = (board.D1, board.D6, board.D2, board.D0)
+keyboard.row_pins = (board.D4, board.D5, board.D7)
 keyboard.diode_orientation = DiodeOrientation.ROW2COL
 
 keyboard.keymap = [
@@ -48,4 +48,3 @@ combos.combos = [
 
 if __name__ == '__main__':
     keyboard.go()
-

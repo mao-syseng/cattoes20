@@ -105,4 +105,4 @@ V6, back to choc since it is easier to type on. Improved spacing and rounded edg
 
 
 V7, back to mx after a year. V6 might be better but would like to make mx switches work. will try lighter switches and cherry keycaps. MOG keycaps look cool but are not comfortable to type on. 
-https://ryanis.cool/cosmos/beta#cm:CoABChkSCRCgkgUgCUCAShIGELCKASAKOBNAgIB0ChkSCRCgnAcgCUCAShIGELCoASAKOABArfAIChgSCRCgpgkgCUCAJhIGELCeASAKOBRA3UIKHxIGEKCkCyAJEgYQsIIJIAo4KED/9ouwA0j94J64mAEYAECWg9if8FVI6JjWwAMKXwoZEhMQwIACQICAmAJIwpmglZC8AVBDOAhAAQoVEhAQQECAgCBI0JWA3ZD1A1ALUJ4CCgJQfwoDUIICGAIiEAjIARDIARj+EiD1BDAAOABAs42snfC6AUitkdyNwZMGEAgiBhiEByCSCSj///////////8BOAhIAFhAaACCAQCYAQg=
+https://ryanis.cool/cosmos/beta#cm:CoABCh0SCBCgTyAJSIACEgUgCkiAAjgTQMSWMUicg7iobwoYEgUQoFsgCRIFELAvIAo4AEDSXkiAgIw8ChsSBRCgZyAJEgUQsDsgCjgUQK6mijhIm4O0qG8KGhIFEKBzIAkSAiAKOChAo+6WgANI24mMu9kBGABAxtCP+CtI5JTH0AIKPwosEhIQQCAAQOLqhsgdSNODpI/Q+gESDiAAQLeFjIyQUEjah4RFOABAwriH4BkYAkD9i9SV8DlIz5mkzeH7AxACIgwIvgEQvgEYhAcg7Ak4AkgAWEBoAHICIBmCAQA=
